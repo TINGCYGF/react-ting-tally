@@ -20,8 +20,17 @@ button,input{
   font: inherit;
   border: none;
 }
+:focus{
+  outline: none;
+}
 
 .icon{
   width: 1em;
   height: 1em;
+}
+
+.clearfix::after{
+  content: '';
+  display: block;
+  clear: both;
 }

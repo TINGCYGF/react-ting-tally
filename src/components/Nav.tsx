@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import Icon from "./Icon";
 
 const NavWrapper = styled.div`
-  background: #e5e5e5;
+  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;

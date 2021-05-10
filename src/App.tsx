@@ -9,7 +9,7 @@ import {
 import Home from 'views/Home';
 import Label from './views/Label';
 import Detail from 'views/Detail';
-import Account from 'views/Account';
+import Account from 'views/Account/Account';
 import Statistics from 'views/Statistics';
 import NotFound from 'views/NotFound';
 

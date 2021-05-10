@@ -1,11 +1,14 @@
 import React from 'react'
+import Layout from "../components/Layout";
 
 
 const Label = ()=>{
   return (
-    <div>
-      Label
-    </div>
+    <Layout name="label">
+      <div>
+        Label
+      </div>
+    </Layout>
   )
 };
 

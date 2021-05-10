@@ -1,11 +1,14 @@
 import React from 'react'
+import Layout from "../components/Layout";
 
 
 const Detail = ()=>{
   return (
-    <div>
-      Detail
-    </div>
+    <Layout name="detail">
+      <div>
+        Detail
+      </div>
+    </Layout>
   )
 };
 

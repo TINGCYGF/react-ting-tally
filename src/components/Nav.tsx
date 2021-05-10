@@ -9,7 +9,14 @@ const NavWrapper = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 2px rgba(0,0,0,0.2);
-  
+  .item{
+    display: flex;
+    flex-grow: 1;
+    padding: 6px 0;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+  }
 `
 
 const Nav = () => {

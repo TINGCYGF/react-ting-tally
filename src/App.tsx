@@ -7,7 +7,7 @@ import {
   Redirect
 } from 'react-router-dom';
 import Home from 'views/Home';
-import Label from './views/Label';
+import {Label} from './views/Label';
 import Detail from 'views/Detail';
 import Account from 'views/Account/Account';
 import Statistics from 'views/Statistics';

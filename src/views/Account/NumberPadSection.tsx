@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import styled from "styled-components";
 
 const NumberPadSectionStyle = styled.div`
@@ -62,17 +62,21 @@ const NumberPadSectionStyle = styled.div`
     }
   }
 `
-
-const NumberPadSection:React.FC = () => {
-  const [output, _setOutput] = useState<string>('0');
+type Props = {
+  value: number;
+  onChange: (value: number) => void;
+  onOk: () => void;
+}
+const NumberPadSection:React.FC<Props> = (props) => {
+  const output = props.value.toString()
   const setOutput = (output: string) => {
     let _output
    if(output.length >= 16){
-     _output = output.slice(0, 16)
+     _output = parseFloat(output.slice(0, 16))
    }else {
-     _output = output
+     _output = parseFloat(output)
    }
-   _setOutput(_output)
+   props.onChange(_output)
   }
   const onClickWrapper = (e: React.MouseEvent<HTMLInputElement>) => {
     const text = (e.target as HTMLButtonElement).textContent
@@ -112,6 +116,8 @@ const NumberPadSection:React.FC = () => {
         setOutput('0')
         break
       case "确认":
+        props.onOk()
+        break
     }
   }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Layout from "../../components/Layout";
 import styled from "styled-components";
 import { TagsSection } from "./TagsSection";
@@ -14,15 +14,32 @@ const AccountLayout = styled(Layout)`
 `
 
 const Account = ()=>{
+  const [selected, steSelected] = useState({
+    tabs: [] as number[],
+    note: '',
+    category: '-' as('-' | '+'),
+    amount: 0
+  })
+
+  const onChange = (obj: Partial<typeof selected>) => {
+    steSelected({...selected, ...obj})
+  }
+
   return (
     <AccountLayout name="Account">
-      <TagsSection />
 
-      <NotesSection />
+      <TagsSection value={selected.tabs}
+                   onChange={(tabs) => onChange({tabs})}/>
 
-      <CategorySection />
+      <NotesSection  node={selected.note}
+                     onChange={(note) => onChange({note})}/>
 
-      <NumberPadSection />
+      <CategorySection  value={selected.category}
+                        onChange={async (category) => onChange({category})}/>
+
+      <NumberPadSection  value={selected.amount}
+                         onChange={(amount) => onChange({amount})}
+                         onOk={ () => console.log("ok") }/>
 
     </AccountLayout>
   )

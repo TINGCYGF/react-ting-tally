@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React from "react";
+import useTage from "../Bus/useTage";
 
 const TagsSectionStyle = styled.div`
   flex-grow: 1;
@@ -30,24 +31,28 @@ const TagsSectionStyle = styled.div`
     color: #666
   }
 `
+type Props = {
+  value: number[];
+  onChange: (selected:number[]) => void;
+}
+const TagsSection: React.FC<Props> = (props) => {
+  const {tags, setTage} = useTage()
 
-const TagsSection: React.FunctionComponent = (props) => {
-  const [tags, setTage] = useState<string[]>(['房租', '餐饮']);
-  const [selectedTags, setSelectedTags] = useState<string[]>([])
+  const selectedTagIDs = props.value
 
   const onAddTag = () => {
     const tagName = window.prompt("新标签名为")
     if (tagName !== null){
-      setTage([...tags, tagName])
+      setTage([...tags, {id: Math.random(), name: tagName}])
     }
   };
 
-  const onToggleTag = (tag: string) => {
-    const index = selectedTags.indexOf(tag);
+  const onToggleTag = (tagID: number) => {
+    const index = selectedTagIDs.indexOf(tagID);
     if(index >= 0){
-      setSelectedTags(selectedTags.filter(t => t !== tag));
+      props.onChange(selectedTagIDs.filter(t => t !== tagID));
     }else {
-      setSelectedTags([...selectedTags, tag])
+      props.onChange([...selectedTagIDs, tagID])
     }
   }
 
@@ -57,10 +62,10 @@ const TagsSection: React.FunctionComponent = (props) => {
         {
           tags.map(tag => {
             return (
-              <li key={tag}
-                  onClick={() => {onToggleTag(tag)}}
-                  className={selectedTags.indexOf(tag)>=0 ? "selected" : ''}
-              >{tag}</li>
+              <li key={tag.id}
+                  onClick={() => {onToggleTag(tag.id)}}
+                  className={selectedTagIDs.indexOf(tag.id)>=0 ? "selected" : ''}
+              >{tag.name}</li>
             )
           })
         }

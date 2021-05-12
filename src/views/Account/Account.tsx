@@ -5,7 +5,7 @@ import { TagsSection } from "./TagsSection";
 import { NotesSection } from "./NotesSection";
 import { CategorySection } from "./CategorySection";
 import { NumberPadSection } from "./NumberPadSection";
-import {useRecords} from "../Bus/useRecords";
+import { useRecords } from "../Bus/useRecords";
 
 const AccountLayout = styled(Layout)`
   display: flex;
@@ -14,22 +14,27 @@ const AccountLayout = styled(Layout)`
 
 const defaultDate = {
   tagIds: [] as number[],
-    note: '',
+  note: '',
   category: '-' as('-' | '+'),
   amount: 0
 }
 
 const Account = () => {
   const [selected, steSelected] = useState(defaultDate)
-  const {addRecords} = useRecords()
+  const { addRecords } = useRecords()
 
   const onChange = (obj: Partial<typeof selected>) => {
+    console.log(obj.amount);
     steSelected({...selected, ...obj})
   }
   const submit = () => {
-    addRecords(selected)
-    alert("保存成功")
-    steSelected(defaultDate)
+    if(selected.amount === 0 || selected.tagIds.length ===0){
+      alert("请选择标签和填写金额")
+    }else {
+      addRecords(selected)
+      alert("保存成功")
+      steSelected(defaultDate)
+    }
   }
 
   return (
@@ -47,7 +52,6 @@ const Account = () => {
 
       <CategorySection
         value={selected.category}
-
         onChange={async (category) => onChange({category})}
       />
 

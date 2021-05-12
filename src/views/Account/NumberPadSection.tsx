@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 
 const NumberPadSectionStyle = styled.div`
@@ -64,19 +64,18 @@ const NumberPadSectionStyle = styled.div`
 `
 type Props = {
   value: number;
-  onChange: (value: number) => void;
+  onChange: (amount: number) => void;
   onOk: () => void;
 }
 const NumberPadSection:React.FC<Props> = (props) => {
-  const output = props.value.toString()
+  const [output, _setOutput] = useState(props.value.toString())
   const setOutput = (output: string) => {
-    let _output
    if(output.length >= 16){
-     _output = parseFloat(output.slice(0, 16))
+     _setOutput(output.slice(0, 16))
    }else {
-     _output = parseFloat(output)
+     _setOutput(output)
    }
-   props.onChange(_output)
+   props.onChange(parseFloat(output))
   }
   const onClickWrapper = (e: React.MouseEvent<HTMLInputElement>) => {
     const text = (e.target as HTMLButtonElement).textContent
@@ -102,7 +101,7 @@ const NumberPadSection:React.FC<Props> = (props) => {
         if(output.indexOf('.') >= 0){
           break
         }else {
-          setOutput(output + text)
+          setOutput(output + ".")
         }
         break
       case "删除":

@@ -13,7 +13,6 @@ const Tags = () => {
         {id: createId(), name: '餐饮'}
       ]
     }
-    console.log(localTage, "初始化");
     setTage(localTage)
   }, [])
   useUpdate(() => {

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import useTage from "../Bus/useTage";
+import {createId} from "../Bus/lib-create-id";
 
 const TagsSectionStyle = styled.div`
   flex-grow: 1;
@@ -43,7 +44,7 @@ const TagsSection: React.FC<Props> = (props) => {
   const onAddTag = () => {
     const tagName = window.prompt("新标签名为")
     if (tagName !== null){
-      setTage([...tags, {id: Math.random(), name: tagName}])
+      setTage([...tags, {id: createId(), name: tagName}])
     }
   };
 

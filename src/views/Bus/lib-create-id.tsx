@@ -1,6 +1,6 @@
 let id: number;
-id = parseInt(window.localStorage.getItem('inMax') || '0')
 const createId = () => {
+  id = parseInt(window.localStorage.getItem('idMax') || '0')
   id += 1;
   window.localStorage.setItem('idMax', JSON.stringify(id))
   return id

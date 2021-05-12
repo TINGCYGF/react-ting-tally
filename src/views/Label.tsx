@@ -45,11 +45,12 @@ const Label = () => {
           <li key={tag.id}>
             <span className="oneLine">{tag.name}</span>
             <div className='icons'>
-              <Icon name='edit' className='edit' edit={() => {
-                editLabel(tag);
-              }}/>
+              <Icon name='edit'
+                    className='edit'
+                    edit={() => {editLabel(tag.id);}}
+              />
               <Icon name='delete' className='delete' edit={() => {
-                deleteLabel(tag);
+                deleteLabel(tag.id);
               }}/>
             </div>
           </li>

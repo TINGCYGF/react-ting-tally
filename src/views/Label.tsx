@@ -17,6 +17,7 @@ const TagList = styled.ul`
     justify-content: space-between;
     > div{display: flex;}
   }
+  
 `
 
 const Center = styled.div`
@@ -34,8 +35,8 @@ const Center = styled.div`
 `
 
 const Label = () => {
-  // @ts-ignore
-  const {tags, editLabel, deleteLabel} = useTage();
+
+  const {tags, editLabel, deleteLabel, addTag} = useTage();
 
   return (
     <Layout name="label">
@@ -47,9 +48,9 @@ const Label = () => {
             <div className='icons'>
               <Icon name='edit'
                     className='edit'
-                    edit={() => {editLabel(tag.id);}}
+                    onClick={() => {editLabel(tag.id);}}
               />
-              <Icon name='delete' className='delete' edit={() => {
+              <Icon name='delete' className='delete' onClick={() => {
                 deleteLabel(tag.id);
               }}/>
             </div>
@@ -59,7 +60,7 @@ const Label = () => {
       </TagList>
 
       <Center>
-        <button>添加标签</button>
+        <button onClick={addTag}>添加标签</button>
       </Center>
     </Layout>
   )

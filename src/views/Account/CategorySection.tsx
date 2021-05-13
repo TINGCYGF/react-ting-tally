@@ -3,15 +3,18 @@ import styled from "styled-components";
 
 const CategorySectionStyle = styled.div`
   font-size: 24px;
-  > ul{
+
+  > ul {
     display: flex;
-    background: #c4c4c4;
-    > li{
+    background: #ced6e0;
+
+    > li {
       width: 50%;
       text-align: center;
       padding: 16px 0;
       position: relative;
-      &.selected::after{
+
+      &.selected::after {
         content: '';
         display: block;
         height: 3px;
@@ -27,7 +30,7 @@ const CategorySectionStyle = styled.div`
 
 type Props = {
   value: '-' | '+';
-  onChange: (value: '-' | '+') => {}
+  onChange: (value: '-' | '+') => void
 }
 const CategorySection: React.FC<Props> = (props) => {
   const categoryMap = {'-': '支出', '+': '收入'}

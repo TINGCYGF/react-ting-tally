@@ -10,14 +10,20 @@ const Tags = () => {
     if(localTage.length === 0){
       localTage = [
         {id: createId(), name: '房租'},
-        {id: createId(), name: '餐饮'}
+        {id: createId(), name: '餐饮'},
+        {id: createId(), name: '娱乐'},
+        {id: createId(), name: '教育'},
+        {id: createId(), name: '工资'},
+        {id: createId(), name: '奖金'},
+        {id: createId(), name: '基金'},
+        {id: createId(), name: '其他'},
       ]
     }
     setTage(localTage)
   }, [])
   useUpdate(() => {
     window.localStorage.setItem('tags', JSON.stringify(tags))
-  }, [tags])
+  }, tags)
 
   const findTag = (id: number) => tags.filter(tag => tag.id === id)[0];
   const findTagIndex = (id: number) => {
@@ -80,8 +86,12 @@ const Tags = () => {
         setTage([...tagsClone, {id: createId(), name: newLabel}])
       }
     }
-  }
-  return {tags, setTage, findTag, editLabel, deleteLabel, addTag}
+  };
+  const getName = (id: number) => {
+    const tag = tags.filter((tag) => tag.id === id)[0]
+    return tag ? tag.name : ''
+  };
+  return {tags, setTage, findTag, editLabel, deleteLabel, addTag, getName}
 }
 
 export default Tags

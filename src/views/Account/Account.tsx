@@ -20,20 +20,21 @@ const defaultDate = {
 }
 
 const Account = () => {
-  const [selected, steSelected] = useState(defaultDate)
+  const [selected, steSelected] = useState(JSON.parse(JSON.stringify(defaultDate)))
   const { addRecords } = useRecords()
 
   const onChange = (obj: Partial<typeof selected>) => {
-    console.log(obj.amount);
     steSelected({...selected, ...obj})
   }
   const submit = () => {
     if(selected.amount === 0 || selected.tagIds.length ===0){
       alert("请选择标签和填写金额")
+      return false
     }else {
       addRecords(selected)
       alert("保存成功")
-      steSelected(defaultDate)
+      steSelected(JSON.parse(JSON.stringify(defaultDate)))
+      return true
     }
   }
 

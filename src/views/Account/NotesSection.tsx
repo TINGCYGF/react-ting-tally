@@ -3,14 +3,26 @@ import React, {useRef} from "react";
 
 
 const NotesSectionStyle = styled.div`
-  background: #f5f5f5;
+  background: #e7eaee;
   padding: 10px 16px;
   font-size: 14px;
-  > label{
+
+  > label {
     display: flex;
     align-items: center;
-    > span{ margin-right: 16px; white-space: nowrap; line-height: 46px;}
-    > input{ display: block; width: 100%; background: none; line-height: 46px;}
+
+    > span {
+      margin-right: 16px;
+      white-space: nowrap;
+      line-height: 46px;
+    }
+
+    > input {
+      display: block;
+      width: 100%;
+      background: none;
+      line-height: 46px;
+    }
   }
 `
 type Props = {

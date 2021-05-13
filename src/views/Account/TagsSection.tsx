@@ -4,28 +4,41 @@ import useTage from "../Bus/useTage";
 import {createId} from "../Bus/lib-create-id";
 
 const TagsSectionStyle = styled.div`
+  border: 1px red;
+  overflow: scroll;
+
   flex-grow: 1;
-  background: #FFF;
+  background: #ffffff;
   padding: 12px 16px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  >ul{
+
+  > ul {
     display: flex;
     margin: 0 -12px;
-    >li{
-      background: aquamarine;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+
+    > li {
+      overflow: auto;
+      background: #dfe4ea;
       border-radius: 18px;
       padding: 4px 18px;
       font-size: 14px;
       margin: 8px 12px;
-      &.selected{
-        background: blue;
+      white-space: nowrap;
+
+      &.selected {
+        background: #2f3542;
+        color: #e5e4e4;
       }
     }
   }
-  >button{
+
+  > button {
+    margin: 6px auto;
     background: none;
     padding: 0 4px;
     border-bottom: 1px solid #333;

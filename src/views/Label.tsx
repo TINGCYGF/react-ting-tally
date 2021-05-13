@@ -17,7 +17,6 @@ const TagList = styled.ul`
     justify-content: space-between;
     > div{display: flex;}
   }
-  
 `
 
 const Center = styled.div`
@@ -28,7 +27,7 @@ const Center = styled.div`
     font-size: 18px;
     padding: 8px;
     border: none;
-    background: aquamarine;
+    background: #747d8c;
     border-radius: 4px;
     color: white;
   }
@@ -66,4 +65,4 @@ const Label = () => {
   )
 };
 
-export  {Label}
+export  { Label }

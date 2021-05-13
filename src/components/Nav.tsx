@@ -16,17 +16,53 @@ const NavWrapper = styled.div`
     flex-direction:column;
     justify-content: center;
     align-items: center;
+    .icon {
+      width: 24px;
+      height: 24px;
+    }
+    &.selected{
+      color: #f1f2f6;
+      background: #747d8c;
+      .icon{
+        fill: #f1f2f6;
+        background: #747d8c;
+      }
+    }
   }
 `
 
-const Nav = () => {
+
+const Nav: React.FC = () => {
+  const setText = (text:string) => {
+    window.localStorage.setItem("title", text)
+  }
   return (
     <NavWrapper>
-      <NavLink className='item' activeClassName="selected" to="/home"><Icon name='home'/>首页</NavLink>
-      <NavLink className='item' activeClassName="selected" to="/detail"><Icon name='detail'/>明细</NavLink>
-      <NavLink className='item' activeClassName="selected" to="/account"><Icon name='account'/>记账</NavLink>
-      <NavLink className='item' activeClassName="selected" to="/label"><Icon name='label'/>标签</NavLink>
-      <NavLink className='item' activeClassName="selected" to="/statistics"><Icon name='statistics'/>统计</NavLink>
+
+      <NavLink className='item'
+               activeClassName="selected"
+               to="/detail"
+               onClick={() => setText("账 单")}
+      ><Icon name='detail'/>账单</NavLink>
+
+      <NavLink className='item'
+               activeClassName="selected"
+               to="/account"
+               onClick={() => setText("记 账")}
+      ><Icon name='account'/>记账</NavLink>
+
+      <NavLink className='item'
+               activeClassName="selected"
+               to="/label"
+               onClick={() => setText("标 签")}
+      ><Icon name='label'/>标签</NavLink>
+
+      <NavLink className='item'
+               activeClassName="selected"
+               to="/statistics"
+               onClick={() => setText("统 计")}
+      ><Icon name='statistics'/>统计</NavLink>
+
     </NavWrapper>
   )
 }

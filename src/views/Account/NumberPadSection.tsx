@@ -4,60 +4,73 @@ import styled from "styled-components";
 const NumberPadSectionStyle = styled.div`
   display: flex;
   flex-direction: column;
-  > .output{
+
+  > .output {
     display: flex;
     flex-direction: row;
     background: white;
     font-size: 36px;
     line-height: 76px;
     padding: 0 16px;
-    box-shadow: inset 0 -5px 5px -5px rgba(0,0,0,0.25);
-    > .text{
+    box-shadow: inset 0 -5px 5px -5px rgba(0, 0, 0, 0.25);
+
+    > .text {
       font-weight: bold;
       white-space: nowrap;
     }
-    > .number{
-      flex-grow:1;
+
+    > .number {
+      flex-grow: 1;
       text-align: right;
       margin-right: 25px;
     }
   }
-  > .pad{
-    > button{
+
+  > .pad {
+    > button {
       border: none;
-      float:left;
-      width:25%;
-      height:52px;
+      float: left;
+      width: 25%;
+      height: 52px;
       text-align: center;
       line-height: 52px;
-      &.ok{
+
+      &.ok {
         height: 104px;
         line-height: 104px;
-        float:right;
+        float: right;
       }
-      &.zero{
-        width:50%;
+
+      &.zero {
+        width: 50%;
       }
+
       &:nth-child(1) {
-        background: #f2f2f2;
+        background: #ffffff;
       }
+
       &:nth-child(2), &:nth-child(5) {
-        background: #E8E8E8;
+        background: #fafbfc;
       }
+
       &:nth-child(3), &:nth-child(6), &:nth-child(9) {
-        background: #DEDEDE;
+        background: #f5f7fa;
       }
+
       &:nth-child(4), &:nth-child(7), &:nth-child(10) {
-        background: #D3D3D3
+        background: #eceff3
       }
+
       &:nth-child(8), &:nth-child(11), &:nth-child(13) {
-        background: #C9C9C9
+        background: #dfe5ec
       }
+
       &:nth-child(14) {
-        background: #BFBFBF
+        background: #a4b0be
       }
+
       &:nth-child(12) {
-        background: #B5B5B5;
+        background: #a4b0be
       }
     }
   }
@@ -65,7 +78,7 @@ const NumberPadSectionStyle = styled.div`
 type Props = {
   value: number;
   onChange: (amount: number) => void;
-  onOk: () => void;
+  onOk: () => boolean;
 }
 const NumberPadSection:React.FC<Props> = (props) => {
   const [output, _setOutput] = useState(props.value.toString())
@@ -76,6 +89,12 @@ const NumberPadSection:React.FC<Props> = (props) => {
      _setOutput(output)
    }
    props.onChange(parseFloat(output))
+  }
+  const ok = () => {
+    const isOk: boolean = props.onOk()
+    if(isOk){
+      _setOutput('0')
+    }
   }
   const onClickWrapper = (e: React.MouseEvent<HTMLInputElement>) => {
     const text = (e.target as HTMLButtonElement).textContent
@@ -115,7 +134,7 @@ const NumberPadSection:React.FC<Props> = (props) => {
         setOutput('0')
         break
       case "确认":
-        props.onOk()
+        ok()
         break
     }
   }

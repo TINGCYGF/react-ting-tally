@@ -5,8 +5,6 @@ import {createId} from "../Bus/lib-create-id";
 
 const TagsSectionStyle = styled.div`
   border: 1px red;
-  overflow: scroll;
-
   flex-grow: 1;
   background: #ffffff;
   padding: 12px 16px;
@@ -22,7 +20,6 @@ const TagsSectionStyle = styled.div`
     justify-content: center;
 
     > li {
-      overflow: auto;
       background: #dfe4ea;
       border-radius: 18px;
       padding: 4px 18px;

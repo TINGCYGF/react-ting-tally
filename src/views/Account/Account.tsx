@@ -39,7 +39,7 @@ const Account = () => {
   }
 
   return (
-    <AccountLayout name="Account">
+    <AccountLayout name="Account" scrollTop={9999}>
 
       <TagsSection
         value={selected.tagIds}

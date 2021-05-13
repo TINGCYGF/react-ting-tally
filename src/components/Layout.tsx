@@ -1,5 +1,5 @@
 import Nav from "./Nav";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styled from "styled-components";
 
 const LayoutWrapper = styled.div`
@@ -18,29 +18,39 @@ const LayoutWrapper = styled.div`
   > main{
     flex-grow: 1;
     overflow: auto;
+
   }
 `
 
 type Props = {
   name: string;
   className?: string;
-  children: any
+  scrollTop?: number;
 }
 
-const Layout = (props: Props) => {
+const Layout: React.FC<Props> = (props) => {
   const [text] = useState(window.localStorage.getItem("title")||'账 单')
-
-  useEffect(() => {}, [text])
+  const mainRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    setTimeout(() => {
+      if(mainRef.current){
+      mainRef.current.scrollTop = props.scrollTop as number;
+      }
+    }, 0)
+  }, [props.scrollTop])
   return (
     <LayoutWrapper>
       <div className="topNav">{text}</div>
-      <main className={props.className}>
+      <main ref={mainRef} className={props.className}>
         {props.children}
       </main>
       <Nav/>
     </LayoutWrapper>
   )
+}
 
+Layout.defaultProps = {
+  scrollTop: 0
 }
 
 export default Layout

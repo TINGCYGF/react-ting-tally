@@ -6,7 +6,7 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import Home from 'views/Home';
+
 import {Label} from './views/Label';
 import Detail from 'views/Detail';
 import Account from 'views/Account/Account';
@@ -29,7 +29,6 @@ function App() {
     <Router>
       <Wrapper>
         <Switch>
-          <Route path="/home"><Home/></Route>
           <Route path="/detail"><Detail/></Route>
           <Route path="/account"><Account/></Route>
           <Route path="/label"><Label/></Route>

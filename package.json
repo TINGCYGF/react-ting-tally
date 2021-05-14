@@ -1,6 +1,7 @@
 {
   "name": "react-tally",
   "version": "0.1.0",
+  "homepage": "https://tingcygf.gitee.io/prototype/tally-react/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",

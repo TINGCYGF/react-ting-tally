@@ -41,7 +41,7 @@ const Nav: React.FC = () => {
 
       <NavLink className='item'
                activeClassName="selected"
-               to="/detail"
+               to="/details"
                onClick={() => setText("账 单")}
       ><Icon name='detail'/>账单</NavLink>
 

@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
-import Layout from "../components/Layout";
-import {CategorySection} from "./Account/CategorySection";
-import {RecordsItem, useRecords} from "./Bus/useRecords";
-import useTage from "./Bus/useTage";
+import Layout from "../../components/Layout";
+import {CategorySection} from "../Account/CategorySection";
+import {RecordsItem, useRecords} from "../Bus/useRecords";
+import useTage from "../Bus/useTage";
 import styled from "styled-components";
 import day from "dayjs";
+import { Link } from 'react-router-dom';
 
 
 const Wrapper = styled.div`
@@ -76,7 +77,7 @@ const Wrapper = styled.div`
 `
 
 
-const Detail = () => {
+const Details = () => {
   const [category, setCategory] = useState<'-' | '+'>('-')
   const {records} = useRecords()
   const {getName} = useTage()
@@ -111,18 +112,20 @@ const Detail = () => {
           <div className="item">
             {
               records.map(r => <div key={r.createAt}>
-                <div className="upside">
-                  <span className="tag-font">标签: </span>
-                  <ul>{r.tagIds.map(tagId => <li key={tagId}>{getName(tagId)}</li>)}</ul>
-                </div>
-                <div className="bom-part">
-                  <span className="bom-mou">金额 ￥{r.amount}</span>
-                  <span className="bom-time">{day(r.createAt).format('YYYY年MM月DD日')}</span>
-                </div>
-                {r.note !== '' && <div className="remark">
-                    <span>备注: </span>
-                    <span>{r.note}</span>
-                  </div>}
+                <Link to={'/detail/' + r.createAt}>
+                  <div className="upside">
+                    <span className="tag-font">标签: </span>
+                    <ul>{r.tagIds.map(tagId => <li key={tagId}>{getName(tagId)}</li>)}</ul>
+                  </div>
+                  <div className="bom-part">
+                    <span className="bom-mou">金额 ￥{r.amount}</span>
+                    <span className="bom-time">{day(r.createAt).format('YYYY年MM月DD日')}</span>
+                  </div>
+                  {r.note !== '' && <div className="remark">
+                      <span>备注: </span>
+                      <span>{r.note}</span>
+                    </div>}
+                </Link>
               </div>)}
           </div>
         </div>)}
@@ -131,4 +134,4 @@ const Detail = () => {
   )
 };
 
-export default Detail
+export default Details

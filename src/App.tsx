@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 
 import {Label} from './views/Label';
-import Detail from 'views/Detail';
+import Details from 'views/Detail/Details';
 import Account from 'views/Account/Account';
 import Statistics from 'views/Statistics';
 import NotFound from 'views/NotFound';
@@ -29,11 +29,12 @@ function App() {
     <Router>
       <Wrapper>
         <Switch>
-          <Route path="/detail"><Detail/></Route>
+          <Route path="/details"><Details/></Route>
+          <Route exact path="/detail/:id"> </Route>
           <Route path="/account"><Account/></Route>
           <Route path="/label"><Label/></Route>
           <Route path="/statistics"><Statistics/></Route>
-          <Redirect exact from="/" to="/home"/>
+          <Redirect exact from="/" to="/account"/>
           <Route path="*"><NotFound/></Route>
         </Switch>
       </Wrapper>

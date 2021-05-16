@@ -39,6 +39,7 @@ const Wrapper = styled.div`
       > ul {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
 
         > li {
           white-space: nowrap;
@@ -75,7 +76,6 @@ const Wrapper = styled.div`
     }
   }
 `
-
 
 const Details = () => {
   const [category, setCategory] = useState<'-' | '+'>('-')

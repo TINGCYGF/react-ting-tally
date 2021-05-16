@@ -19,6 +19,7 @@ type Props = {
 } & React.InputHTMLAttributes<HTMLInputElement>;
 const Input: React.FC<Props> = (props) => {
   const {label, children, ...rest} = props;
+
   return (
     <Label>
       <span>{props.label}</span>
@@ -27,4 +28,4 @@ const Input: React.FC<Props> = (props) => {
   );
 };
 
-export {Input};
+export { Input };

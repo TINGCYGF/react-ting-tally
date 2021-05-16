@@ -48,9 +48,7 @@ type Props = {
 }
 const TagsSection: React.FC<Props> = (props) => {
   const {tags, setTage} = useTage()
-
   const selectedTagIDs = props.value
-
   const onAddTag = () => {
     const tagName = window.prompt("新标签名为")
     if (tagName !== null){
